@@ -1,0 +1,26 @@
+name: Sync to fork (Vercel deployment trigger)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    # Only run on the org repo — skip on the fork to avoid a push loop.
+    if: github.repository == 'onsuite/onbasher-marketing'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Don't persist the runner's GITHUB_TOKEN as a git extraheader —
+          # it would override FORK_SYNC_TOKEN when we push to the personal fork.
+          persist-credentials: false
+
+      - name: Push to fork
+        env:
+          TOKEN: ${{ secrets.FORK_SYNC_TOKEN }}
+        run: |
+          git remote add fork "https://x-access-token:${TOKEN}@github.com/vineelnalla/onbasher-marketing.git"
+          git push fork main --force

@@ -1,0 +1,10 @@
+{
+  "_comment": "Blog manifest — the single source of truth for what agents may write. Each key is a collection: a directory under content/blog/ and a Paperclip project. Add collections as the app's content strategy takes shape; re-run `content.sh bootstrap <app>` after. Optional `route` (e.g. '/guides') gives a collection a top-level public URL for SEO/AEO — posts render at <route>/<slug> and /blogs/<key>/<slug> 308-redirects there; omit route to stay under /blogs. previewBase is repo convention (the dev port), not a machine path.",
+  "previewBase": "http://localhost:4026",
+  "collections": {
+    "posts": {
+      "name": "Posts",
+      "description": "General blog posts — announcements, how-tos, product notes."
+    }
+  }
+}
