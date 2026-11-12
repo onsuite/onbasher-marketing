@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Basher — the OnSuite reference starter app',
+  title: 'Basher — auto-approve Claude Code bash prompts on Mac',
   description:
-    'Basher is the reference starter app for the OnSuite platform — demonstrating authentication, SSO, and workspace management.',
+    'A menu-bar app that answers Claude Code bash prompts in Terminal, VS Code and Cursor. Per-session switches; risky commands always wait for you.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
