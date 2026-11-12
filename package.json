@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4026",
+    "dev": "next dev -p 4027",
     "build": "next build",
-    "start": "next start -p 4026",
+    "start": "next start -p 4027",
     "lint": "next lint",
     "blog:check": "node scripts/check-blog.mjs"
   },

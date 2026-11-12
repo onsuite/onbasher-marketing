@@ -63,7 +63,7 @@ URL constants live in `src/lib/urls.ts`. Set `NEXT_PUBLIC_ONSUITE_APP_URL` and
 
 ```bash
 npm install
-npm run dev      # localhost:4026 (onbasher); scaffolded apps get 40xx
+npm run dev      # localhost:4027 (onbasher); scaffolded apps get 40xx
 npm run build
 npm run lint
 ```
