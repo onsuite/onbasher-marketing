@@ -1,4 +1,4 @@
-const VERSION = '2.5';
+const VERSION = '2.6';
 const DMG = `/download/Basher-${VERSION}.dmg`;
 const VSIX = '/Applications/Basher.app/Contents/Resources/Basher.vsix';
 
@@ -59,7 +59,7 @@ export default function Page() {
                 {Icon.download}
                 Download for Mac
               </a>
-              <span className="fine">v{VERSION} · macOS 13+ · notarized by Apple</span>
+              <span className="fine">v{VERSION} · Intel and Apple Silicon · macOS 13+ · notarized by Apple</span>
             </div>
           </div>
 
