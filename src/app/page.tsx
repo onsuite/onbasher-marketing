@@ -1,4 +1,4 @@
-const VERSION = '2.1';
+const VERSION = '2.5';
 const DMG = `/download/Basher-${VERSION}.dmg`;
 const VSIX = '/Applications/Basher.app/Contents/Resources/Basher.vsix';
 
@@ -51,8 +51,8 @@ export default function Page() {
             </h1>
             <p className="lede">
               A small menu-bar app that says yes to Claude Code&rsquo;s bash prompts for you, in
-              Terminal, VS Code and Cursor. You choose which sessions it watches, and risky commands
-              still wait for you.
+              Terminal, VS Code and Cursor. You choose which sessions it watches, and Claude Code&rsquo;s
+              own deny list decides what never runs.
             </p>
             <div className="cta-row">
               <a className="btn" href={DMG} download>
@@ -82,13 +82,13 @@ export default function Page() {
           <h2>Stay in flow</h2>
           <p className="sub">
             Long Claude runs stall on &ldquo;Do you want to proceed?&rdquo; while you are in another window.
-            Basher watches for that one prompt and presses Enter, even in background tabs.
+            Basher answers that one prompt from inside Claude Code, even in background tabs.
           </p>
           <div className="grid3">
             <div className="feat">
               <div className="ico">{Icon.layers}</div>
               <h3>Every terminal you use</h3>
-              <p>Terminal.app tabs, plus the integrated terminal in VS Code and Cursor through a bundled extension.</p>
+              <p>Terminal.app, VS Code, Cursor and the Claude Code panel, including sessions that were already open.</p>
             </div>
             <div className="feat">
               <div className="ico">{Icon.toggle}</div>
@@ -97,8 +97,8 @@ export default function Page() {
             </div>
             <div className="feat">
               <div className="ico">{Icon.shield}</div>
-              <h3>Risky commands wait</h3>
-              <p>Deletes, sudo, force pushes and piped shells are never auto-approved. You click those yourself.</p>
+              <h3>You set the limits</h3>
+              <p>Basher approves every bash prompt. Commands on your Claude Code deny list are refused before it sees them.</p>
             </div>
           </div>
         </section>
@@ -108,26 +108,26 @@ export default function Page() {
           <p className="sub">One download covers Terminal, VS Code and Cursor.</p>
           <ol className="steps">
             <li><span><b>Open the DMG</b> and drag Basher into Applications.</span></li>
-            <li><span><b>Open Basher.</b> It lives in the menu bar, not the Dock. When macOS asks, allow it to control Terminal.</span></li>
+            <li><span><b>Open Basher.</b> It lives in the menu bar, not the Dock.</span></li>
+            <li><span><b>Switch on &ldquo;Approve inside Claude Code (all apps)&rdquo;</b> in the menu. That covers Terminal, VS Code, Cursor and the panel.</span></li>
             <li>
               <span>
-                <b>For VS Code or Cursor,</b> install the bundled extension once:{' '}
-                <code className="k">code --install-extension {VSIX}</code> (use <code className="k">cursor</code> for Cursor),
-                then reload the window.
+                <b>Optional:</b> to list VS Code or Cursor sessions in the menu, install the bundled extension:{' '}
+                <code className="k">code --install-extension {VSIX}</code> (use <code className="k">cursor</code> for Cursor).
               </span>
             </li>
-            <li><span><b>Pick your sessions</b> from the menu-bar icon. A green tick means Basher is approving there.</span></li>
           </ol>
         </section>
 
         <section className="band" id="safety">
-          <h2>What Basher never approves</h2>
+          <h2>Keep a deny list</h2>
           <p className="sub">
-            Basher only answers bash approval prompts, and skips any command that matches its deny list.
-            Those prompts stay on screen for you to decide.
+            Basher says yes to every bash prompt Claude Code shows. Commands you list under{' '}
+            <code className="k">permissions.deny</code> in <code className="k">~/.claude/settings.json</code> are
+            refused by Claude Code before any prompt, so Basher never sees them. A good start:
           </p>
-          <div className="deny" aria-label="Commands Basher will not approve">
-            {['rm -r / rm -f', 'sudo', 'git push --force', 'git reset --hard', '| sh · | bash', 'dd if=', 'mkfs', 'chmod -R', 'kill -9 · pkill'].map((d) => (
+          <div className="deny" aria-label="Suggested Claude Code deny rules">
+            {['Bash(sudo *)', 'Bash(rm -rf *)', 'Bash(git push --force*)', 'Bash(git reset --hard*)', 'Bash(* | sh)'].map((d) => (
               <span key={d}>{d}</span>
             ))}
           </div>
