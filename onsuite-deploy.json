@@ -1,0 +1,49 @@
+{
+  "_comment": "Deploy manifest for a MARKETING-ONLY app (ONS-40 shape, as on50k). It lives in the marketing repo because onbasher has no -app repo; provision_app falls back to this path. No api, no app: the store lists it through its app-registration.json (apps.json `registration`, plan 128).",
+  "slug": "onbasher",
+  "name": "basher",
+  "displayName": "Basher",
+  "ports": {
+    "marketing": 4027
+  },
+  "domains": {
+    "marketing": "onbasher.${store:domain}"
+  },
+  "github": {
+    "org": "onsuite",
+    "forkOwner": "vineelnalla",
+    "repos": {
+      "marketing": "onbasher-marketing"
+    },
+    "repoSecrets": {
+      "onbasher-marketing": [
+        {
+          "key": "FORK_SYNC_TOKEN",
+          "from": "env"
+        }
+      ]
+    }
+  },
+  "vercel": [
+    {
+      "team": "vineelns-projects",
+      "project": "onbasher-marketing",
+      "framework": "nextjs",
+      "gitRepo": "vineelnalla/onbasher-marketing",
+      "surface": "marketing"
+    }
+  ],
+  "surfaces": {
+    "marketing": {
+      "envFile": ".env.local",
+      "env": {}
+    }
+  },
+  "secrets": {
+    "note": "Values never live here — provided at provision time via env / stores/<store>/.env.store.",
+    "required": [
+      "FORK_SYNC_TOKEN",
+      "VERCEL_TOKEN"
+    ]
+  }
+}
