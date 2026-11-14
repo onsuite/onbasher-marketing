@@ -1,0 +1,38 @@
+{
+  "slug": "onbasher",
+  "name": "Basher",
+  "tagline": "Auto-approve Claude Code bash prompts on your Mac",
+  "description": "Basher is a Mac app that answers Claude Code bash permission prompts for you, so long agent runs do not stop to ask. Notarized by Apple; runs on Intel and Apple Silicon (macOS 13+).",
+  "icon": "⌨️",
+  "category": "personal",
+  "status": "published",
+  "visibility": "public",
+  "is_consumer": true,
+  "roles": [
+    {
+      "key": "owner",
+      "label": "Owner",
+      "description": "Owner of this personal space.",
+      "is_default": false,
+      "is_superuser": true,
+      "hierarchy": 100,
+      "actions": []
+    }
+  ],
+  "actions": [],
+  "listing": {
+    "platforms": {
+      "web": false,
+      "mobile": false
+    },
+    "screenshots": [
+      {
+        "src": "https://onbasher.onsuite.in/listing/phone-1-menu.png",
+        "alt": "The Basher menu: every Claude session with its own on/off switch, and a master switch to pause Basher"
+      }
+    ],
+    "works_with": [],
+    "highlights": [],
+    "website": "https://onbasher.onsuite.in"
+  }
+}
